@@ -26,11 +26,9 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/*
 
 # install the oc client tools
-RUN set -x && \
-    curl -fSL "https://github.com/openshift/origin/releases/download/${OC_VERSION}/${OC_RELEASE}.tar.gz" -o /tmp/release.tar.gz && \
-    tar --strip-components=1 -xzvf /tmp/release.tar.gz -C /tmp/ && \
-    mv /tmp/oc /usr/local/bin/ && \
-    rm -rf /tmp/*
+RUN wget https://github.com/openshift/okd/releases/download/4.5.0-0.okd-2020-09-04-180756/openshift-client-linux-4.5.0-0.okd-2020-09-04-180756.tar.gz && \
+     tar -xf openshift-client-linux-4.5.0-0.okd-2020-09-04-180756.tar.gz && \
+     ln -s $(pwd)/oc /usr/local/bin/oc 
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
