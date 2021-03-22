@@ -28,7 +28,7 @@ RUN apt-get update && \
 # install the oc client tools
 RUN set -x && \
     curl -fSL "https://github.com/openshift/okd/releases/download/4.6.0-0.okd-2021-01-23-132511/openshift-client-linux-4.6.0-0.okd-2021-01-23-132511.tar.gz" -o /tmp/release.tar.gz && \
-    tar --strip-components=1 -xzvf /tmp/release.tar.gz -C /tmp/ && \
+    tar -xzvf /tmp/release.tar.gz -C /tmp/ && \
     mv /tmp/oc /usr/local/bin/ && \
     rm -rf /tmp/*
 
